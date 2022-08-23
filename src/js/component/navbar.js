@@ -1,17 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Star from '../../img/stars.png'
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar navbar-light bg-black">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+				<div className="image-container d-flex justify-content-start HomeStars">
+				<img className='HomeStars mt-2' src={Star} alt="Home"/>
+				</div>
 			</Link>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
-				</Link>
-			</div>
 		</nav>
 	);
 };
+
+
+// Agregar button para darle favoritos
+// Cuando le de al button deberia meter el id

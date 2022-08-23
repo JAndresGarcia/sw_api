@@ -1,43 +1,37 @@
+import {filmStore, filmsActions} from './films'
+import { speciesActions, speciesStore } from './species';
+import {planetStore, planetsActions} from './planets'
+import { peoplesActions, peoplesStore } from './peoples';
+import { starshipsAction, starshipsStore } from './starships';
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			/*
+			characters: [
+			],*/
+			...filmStore,
+			...speciesStore,
+			...planetStore,
+			...peoplesStore,
+			...starshipsStore
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
+			/*
+			fetchGetCharacter: async() => {
 				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
+				let response = await fetch("https://www.swapi.tech/api/peoples")
+				response = await response.json()
+				setStore({
+					...store,
+					characters: response
 				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
+			},*/
+			...filmsActions(getStore, getActions, setStore),
+			...speciesActions(getStore, getActions, setStore),
+			...planetsActions(getStore, getActions, setStore),
+			...peoplesActions(getStore, getActions, setStore),
+			...starshipsAction(getStore, getActions, setStore)
 		}
 	};
 };

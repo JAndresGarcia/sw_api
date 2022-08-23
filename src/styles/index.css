@@ -1,3 +1,64 @@
 /* 
     General Styles
 */
+html,
+body {
+  background: black;
+  height: 100%;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+#root {
+  height: inherit;
+}
+
+h2 {
+    padding-left: 50px;
+}
+
+.card-body {
+    background-color: black;
+}
+.titule {
+    margin-bottom: 50px;
+}
+
+.descrip {
+    font-size: 35px;
+}
+
+.planetica{
+    width: 300px;
+    margin-left: 180px;
+    border-radius: 100%;
+}
+
+.HomeStars{
+    width: 100px;
+    margin-left:30px;
+    position: relative;
+    transition: transform 0.2s;
+}
+.HomeStars:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.card {
+    -webkit-box-shadow: -2px 9px 46px -14px rgba(255,255,255,1);
+-moz-box-shadow: -2px 9px 46px -14px rgba(255,255,255,1);
+box-shadow: -2px 9px 46px -14px rgba(255,255,255,1);
+}
+
+.anima {
+    position: relative;
+    transition: transform 0.2s;
+}
+.anima:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
