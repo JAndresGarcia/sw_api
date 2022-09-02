@@ -14,7 +14,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			...speciesStore,
 			...planetStore,
 			...peoplesStore,
-			...starshipsStore
+			...starshipsStore,
+
+			favorites:[]
 		},
 		actions: {
 			/*
@@ -31,7 +33,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 			...speciesActions(getStore, getActions, setStore),
 			...planetsActions(getStore, getActions, setStore),
 			...peoplesActions(getStore, getActions, setStore),
-			...starshipsAction(getStore, getActions, setStore)
+			...starshipsAction(getStore, getActions, setStore),
+			addFavorites: (item) => {
+				const store = getStore();
+				let favorites = [ ...store.favorites, item ]
+				setStore( {...store, favorites} )
+			},
+			removeFavorites: (index) => {
+				const store = getStore();
+				let favorites = [...store.favorites ]
+				favorites.splice(index,1)
+				setStore( {...store, favorites} )
+			}
 		}
 	};
 };

@@ -10,7 +10,7 @@ export default function DetailsPlanets() {
   useEffect(async () => {
     console.log("Component did mount")
     await actions.loadPlanet(params.planetsId)
-  })
+  },[])
   return (
     <div className="container bg-black text-white">
     {planet ?

@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {Link} from 'react-router-dom'
+import { Context } from '../../store/appContext'
 
 export default function ListPlanets(props){
+    const {store,actions} = useContext(Context)
+    const addFavorites = (item) => {
+        actions.addFavorites({id:item.id, name:item.name, type:"Planets"})
+    }
     return(
         <ul className="list-group list-group-horizontal overflow-auto todo">
             {props.planets?.map((planet,index)=>{
@@ -14,6 +19,7 @@ export default function ListPlanets(props){
                         <div className="card-body todo">
                             <h5 className="card-title text-white todo">{planet.name}</h5>
                             <Link to={`/planets/${planet.uid}`} className="btn btn-warning todo">Detalles</Link>
+                            <button type='button' className='btn btn-warning mx-4' onClick={()=>addFavorites(planet)}>❤</button>
                         </div>
                     </div>
                 </li> 

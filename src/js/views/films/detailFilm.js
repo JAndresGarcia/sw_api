@@ -10,7 +10,7 @@ export default function DetailsFilms() {
   useEffect(async () => {
     console.log("Component did mount")
     await actions.loadDetailsFilms(params.filmsId)
-  })
+  },[])
   return (
     <div className="container bg-black text-white">
     {film ?

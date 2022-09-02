@@ -1,16 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Star from '../../img/stars.png'
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context)
 	return (
 		<nav className="navbar navbar-light bg-black">
 			<Link to="/">
-				<div className="image-container d-flex justify-content-start HomeStars">
-				<img className='HomeStars mt-2' src={Star} alt="Home"/>
-				</div>
+				<img className='HomeStars mt-2' src={Star} alt="Home" />
 			</Link>
+			<div className="dropdown favoritos">
+				<button className="btn btn-warning dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+					Favoritos
+				</button>
+				<ul className="dropdown-menu bg-black" aria-labelledby="dropdownMenuButton1">
+					{store.favorites.map((fav, index) => {
+						return (
+							<li className="text-white" onClick={() => actions.removeFavorites(index)}>{fav.name}</li>
+						)
+					})}
+				</ul>
+			</div>
 		</nav>
+
 	);
 };
 
